@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../SearchBar/SearchBar'; // Ensure correct path
-import './Navbar.scss';
+import './NavBar.scss';
 
 // All search-related props are passed through here to SearchBar
 const Navbar = ({ theme, toggleTheme, onSearch, initialQuery, suggestions, onSuggest }) => {
