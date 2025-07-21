@@ -1,0 +1,24 @@
+// src/components/ThemeToggle/ThemeToggle.scss
+@use '../../../src/_variables.scss';
+
+.theme-toggle {
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.8rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  // REMOVE ABSOLUTE POSITIONING HERE
+  position: static; // Or remove these lines entirely
+  top: unset;
+  right: unset;
+  margin: 0; // Remove any previous margins
+
+  &:hover {
+    background-color: rgba(var(--primary-color), 0.1);
+    color: var(--primary-color);
+  }
+}

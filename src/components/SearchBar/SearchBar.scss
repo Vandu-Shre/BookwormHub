@@ -1,0 +1,161 @@
+// src/components/SearchBar/SearchBar.scss
+@use '../../_variables.scss'; // Make sure the path to _variables.scss is correct relative to this file
+
+// Container for the search bar and its dropdown to enable relative positioning
+.search-bar-container {
+    position: relative; // CRITICAL: This makes the absolute positioning of the dropdown relative to this container
+    width: 100%; // Takes full width of its parent (navbar-search-container)
+    max-width: 400px; // Optional: Limit max width if desired
+    // Ensures the dropdown doesn't get cut off if it extends beyond the container's normal bounds
+    // No overflow: hidden; here, as we want the dropdown to be visible outside
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-background); // Uses variable for background
+    border-radius: 25px; // Fully rounded ends
+    padding: 0.4rem 0.5rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); // Inner shadow for depth
+    transition: all 0.2s ease-in-out;
+    width: 100%; // Ensures it fills its container
+
+    // Focus state for the entire search bar
+    &:focus-within {
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px var(--primary-color); // Highlight on focus
+    }
+
+    .search-input {
+        flex-grow: 1; // Allows input to take up available space
+        border: none;
+        background: transparent;
+        padding: 0.5rem 0.8rem;
+        font-size: 1rem;
+        color: var(--text-color);
+        outline: none; // Removes default browser outline
+        font-family: var(--body-font); // Applies body font variable
+
+        &::placeholder {
+            color: var(--secondary-text-color); // Uses variable for placeholder color
+            opacity: 0.8;
+        }
+    }
+
+    .search-button,
+    .clear-button {
+        background: none;
+        border: none;
+        color: var(--primary-color); // Uses primary color for icons
+        font-size: 1.3rem;
+        cursor: pointer;
+        padding: 0.3rem 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: color 0.2s ease, transform 0.1s ease;
+
+        &:hover {
+            color: var(--primary-color-hover);
+            transform: scale(1.05); // Slight scale on hover
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.5); // Focus ring for accessibility
+            border-radius: 50%; // Circular focus ring
+        }
+    }
+
+    .clear-button {
+        color: var(--secondary-color); // Slightly different color for clear icon
+        margin-right: 0.2rem; // Small space before the search button
+        &:hover {
+            color: var(--error-color); // Red on hover for clear button
+        }
+    }
+} // End of .search-bar styles
+
+// --- Autocomplete Dropdown Styles ---
+.autocomplete-dropdown {
+    position: absolute; // CRITICAL: Takes it out of normal document flow, allowing it to overlay
+    top: calc(100% + 5px); /* Position right below the search bar with a small gap */
+    left: 0;
+    right: 0;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-top: none; // No border on top as it's directly below search bar
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+    box-shadow: 0 8px 16px var(--box-shadow-light);
+    max-height: 250px; /* Limit height for scrollability */
+    overflow-y: auto; /* Enable scrolling for many suggestions */
+    z-index: 100; /* Ensure it's above other content in the layout */
+    list-style: none; /* CRITICAL: REMOVES THE BULLET POINTS */
+    padding: 0;
+    margin: 0;
+
+    .suggestion-item {
+        padding: 0.8rem 1rem;
+        cursor: pointer;
+        color: var(--text-color);
+        font-family: var(--body-font);
+        font-size: 0.95rem;
+        border-bottom: 1px solid var(--border-color); /* Separator between items */
+        white-space: nowrap; /* Prevent text wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Show ellipsis for long titles */
+        transition: background-color 0.2s ease;
+
+        &:last-child {
+            border-bottom: none; /* No border for the last item */
+        }
+
+        &:hover {
+            background-color: var(--background-color); // Highlight on hover
+        }
+    }
+}
+
+// Dark mode adjustments for search bar and its elements
+.dark-mode {
+    .search-bar {
+        background-color: var(--card-background); // Should use dark mode card background
+        box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1);
+
+        &:focus-within {
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2), 0 0 0 2px var(--primary-color);
+        }
+
+        .search-input {
+            color: var(--text-color); // Dark mode text color
+            &::placeholder {
+                color: var(--secondary-text-color); // Dark mode placeholder color
+            }
+        }
+        .search-button,
+        .clear-button {
+            color: var(--primary-color); // Dark mode primary color
+            &:hover {
+                color: var(--primary-color-hover);
+            }
+        }
+        .clear-button {
+            color: var(--secondary-text-color); // Dark mode secondary color
+            &:hover {
+                color: var(--error-color);
+            }
+        }
+    }
+    .autocomplete-dropdown {
+        background-color: var(--card-background); // Dark mode card background
+        border-color: var(--border-color); // Dark mode border color
+        box-shadow: 0 8px 16px var(--box-shadow-heavy); // Dark mode heavier shadow
+
+        .suggestion-item {
+            color: var(--text-color); // Dark mode text color
+            border-color: var(--border-color); // Dark mode border color
+            &:hover {
+                background-color: var(--background-color); // Dark mode background color for hover
+            }
+        }
+    }
+}

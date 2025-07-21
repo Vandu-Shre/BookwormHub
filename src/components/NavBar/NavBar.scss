@@ -1,0 +1,115 @@
+// src/components/Navbar/Navbar.scss
+@use '../../_variables.scss';
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--navbar-background);
+    color: var(--navbar-text-color);
+    box-shadow: 0 2px 4px var(--box-shadow-light);
+    position: sticky; // Make navbar sticky
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; // Ensure navbar is on top of most content
+
+    .navbar-brand {
+        font-family: var(--header-font);
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: var(--navbar-brand-color);
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
+    .navbar-links {
+        display: flex;
+        gap: 1.5rem; // Space between links
+
+        a {
+            color: var(--navbar-link-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s ease-in-out;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+
+            &.active {
+                color: var(--primary-color);
+                font-weight: bold; // Highlight active link
+
+                &::after { // Underline effect for active link
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: var(--primary-color);
+                    border-radius: 1px;
+                }
+            }
+        }
+    }
+
+    .navbar-search-container {
+        // ADD THIS: Essential for positioning the autocomplete dropdown correctly
+        position: relative;
+        flex-grow: 1; // Allow search bar to take up available space
+        max-width: 400px; // Keep it from being too wide
+        margin: 0 2rem; // Space it from links and theme toggle
+    }
+
+    .theme-toggle {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--navbar-icon-color);
+        transition: color 0.2s ease-in-out;
+        padding: 0.5rem;
+        border-radius: 50%;
+
+        &:hover {
+            color: var(--primary-color);
+        }
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+    }
+}
+
+// Dark mode adjustments
+.dark-mode {
+    .navbar {
+        background-color: var(--navbar-background); // Should be darker in dark mode
+        box-shadow: 0 2px 4px var(--box-shadow-heavy);
+
+        .navbar-brand {
+            color: var(--navbar-brand-color);
+        }
+        .navbar-links a {
+            color: var(--navbar-link-color);
+            &.active {
+                color: var(--primary-color);
+                &::after {
+                    background-color: var(--primary-color);
+                }
+            }
+        }
+        .theme-toggle {
+            color: var(--navbar-icon-color);
+        }
+    }
+}

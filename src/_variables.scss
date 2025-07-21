@@ -1,0 +1,65 @@
+// src/_variables.scss
+
+// Light Mode Variables (Default)
+:root {
+  // Colors
+  --primary-color: #007bff; // A vibrant blue
+  --primary-color-hover: #0056b3;
+  --secondary-color: #6c757d; // A muted grey
+  --error-color: #dc3545; // Red for errors
+  --success-color: #28a745; // Green for success
+
+  // Text Colors
+  --text-color: #343a40; // Dark grey for general text
+  --secondary-text-color: #6c757d; // Lighter grey for secondary text
+  --muted-text-color: #adb5bd; // Very light grey for muted text
+
+  // Backgrounds
+  --background-color: #f8f9fa; // Light background for the body/app
+  --card-background: #ffffff; // White for cards/components
+  --navbar-background: #e9ecef; // Light grey for navbar
+
+  // Borders & Shadows
+  --border-color: #dee2e6; // Light grey for borders
+  --box-shadow-light: rgba(0, 0, 0, 0.1); // Light shadow for cards/elements
+  --box-shadow-heavy: rgba(0, 0, 0, 0.2); // Heavier shadow for elements like dropdowns (in dark mode)
+
+  // Navbar specific colors
+  --navbar-brand-color: #007bff;
+  --navbar-link-color: #495057;
+  --navbar-icon-color: #495057; // For theme toggle icon etc.
+
+  // Fonts
+  --header-font: 'Pacifico', serif;
+  --body-font: 'Roboto', sans-serif;
+}
+
+// Dark Mode Variables
+.dark-mode {
+  // Colors
+  --primary-color: #4CAF50; // A pleasant green for dark mode primary
+  --primary-color-hover: #388E3C;
+  --secondary-color: #9E9E9E; // Lighter grey
+  --error-color: #EF5350; // Brighter red
+  --success-color: #66BB6A; // Brighter green
+
+  // Text Colors
+  --text-color: #E0E0E0; // Light grey for general text
+  --secondary-text-color: #B0B0B0; // Muted light grey
+  --muted-text-color: #9E9E9E;
+
+  // Backgrounds
+  --background-color: #2c2c2c; // Dark background for the body/app
+  --card-background: #3c3c3c; // Darker grey for cards/components
+  --navbar-background: #212121; // Very dark for navbar
+
+  // Borders & Shadows
+  --border-color: #555555; // Darker border
+  --box-shadow-light: rgba(255, 255, 255, 0.1); // Light shadow for dark mode
+  --box-shadow-heavy: rgba(0, 0, 0, 0.5); // Heavier shadow for dark mode (can be adjusted)
+
+  // Navbar specific colors
+  --navbar-brand-color: #4CAF50;;
+  --navbar-link-color: #B0B0B0;
+  --navbar-icon-color: #B0B0B0;
+}

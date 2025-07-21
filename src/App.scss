@@ -1,0 +1,85 @@
+// src/App.scss
+@use './_variables.scss';
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-wrapper {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.book-list-status {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-text-color);
+    padding: 4rem 0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+}
+
+.book-list-status.error {
+    color: var(--error-color);
+}
+
+// Typewriter Effect Styling
+.typewriter-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid transparent; /* Start with transparent border */
+    margin: 0 auto;
+    letter-spacing: 0.05em;
+
+    animation:
+        typing 6s steps(46, end) forwards, /* Text appears, stays visible */
+        custom-blink-caret 6s step-end forwards; /* Blinking caret, then hides */
+}
+
+/* Keyframes for typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Keyframes for blinking caret - MODIFIED TO HIDE AT THE END */
+@keyframes custom-blink-caret {
+    // This animation runs for 6 seconds.
+    // It blinks (alternates visible/transparent) for most of the duration.
+    // At 100%, it explicitly becomes transparent and stays that way due to 'forwards'.
+    0%, 50% { border-right-color: var(--primary-color); } /* Visible half of each cycle */
+    51%, 99% { border-right-color: transparent; } /* Transparent half of each cycle */
+    100% { border-right-color: transparent; } /* CRITICAL: Ensures caret is transparent at end */
+}
+
+
+// Dark mode adjustments for typewriter
+.dark-mode {
+    .book-list-status {
+        color: var(--secondary-text-color);
+    }
+    // No specific .typewriter-effect dark mode adjustments needed here as it uses vars
+}

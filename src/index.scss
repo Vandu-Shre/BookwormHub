@@ -1,0 +1,49 @@
+// src/index.scss
+@use './_variables.scss';
+
+// Basic reset
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6; // Improved readability
+  color: var(--text-color); // Ensure default body text uses variable
+  background-color: var(--background-color); // Ensure default body background uses variable
+  transition: background-color 0.3s ease, color 0.3s ease; // Smooth theme transition
+}
+
+// Custom scrollbar for better aesthetics
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  border: 2px solid var(--background-color);
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
+}
+
+// Text selection styling
+::selection {
+  background-color: var(--primary-color);
+  color: white;
+}
+::-moz-selection {
+  background-color: var(--primary-color);
+  color: white;
+}
